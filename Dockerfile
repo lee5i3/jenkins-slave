@@ -15,4 +15,4 @@ ENV JAVA_OPTS=-Xmx200m
 
 USER jenkins
 
-CMD java ${JAVA_OPTS} -jar /usr/share/jenkins/slave.jar -secret $JENKINS_SECRET -jnlpUrl ${JENKINS_MASTER_URL}/computer/${JENKINS_SLAVE_NAME}/slave-agent.jnlp -workDir "/opt/jenkins"
+CMD java ${JAVA_OPTS} -jar /usr/share/jenkins/slave.jar -secret $JENKINS_SECRET -jnlpUrl ${JENKINS_MASTER_URL}/computer/${JENKINS_SLAVE_NAME}/slave-agent.jnlp
