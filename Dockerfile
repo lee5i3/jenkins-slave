@@ -14,8 +14,11 @@ RUN usermod -G users -a jenkins && \
 ENV JAVA_OPTS=-Xmx200m
 ENV JENKINS_WORKDIR=/opt/jenkins
 
+RUN mkdir -p ${JENKINS_WORKDIR}
+
+RUN chown jenkins ${JENKINS_WORKDIR}
+
 USER jenkins
 
-RUN mkdir -p ${JENKINS_WORKDIR}
 
 CMD java ${JAVA_OPTS} -jar /usr/share/jenkins/slave.jar -secret $JENKINS_SECRET -jnlpUrl ${JENKINS_MASTER_URL}/computer/${JENKINS_SLAVE_NAME}/slave-agent.jnlp -workDir "${JENKINS_WORKDIR}"
